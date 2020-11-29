@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F83B9D5C2573CA1000B95511 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D5B2573CA1000B95511 /* UsersModel.swift */; };
+		F83B9D612573DA2300B95511 /* PostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D602573DA2300B95511 /* PostsModel.swift */; };
+		F83B9D662573DC2600B95511 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D652573DC2600B95511 /* CommentsModel.swift */; };
+		F83B9D6B2573DCCF00B95511 /* TodosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D6A2573DCCF00B95511 /* TodosModel.swift */; };
+		F83B9D702573DE2300B95511 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D6F2573DE2300B95511 /* CategoriesModel.swift */; };
+		F83B9D752573DF0600B95511 /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D742573DF0600B95511 /* ProductsModel.swift */; };
+		F83B9D7A2573E0C500B95511 /* ProductCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D792573E0C500B95511 /* ProductCategoriesModel.swift */; };
+		F83B9D812573E65C00B95511 /* CreateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D802573E65C00B95511 /* CreateUserRequest.swift */; };
+		F83B9D892573E9AE00B95511 /* ValidationErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D882573E9AE00B95511 /* ValidationErrorModel.swift */; };
+		F83B9D912573EABA00B95511 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B9D902573EABA00B95511 /* CreateUserModel.swift */; };
 		F85C909625723B4A00AADB2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85C909525723B4A00AADB2E /* AppDelegate.swift */; };
 		F85C909825723B4A00AADB2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85C909725723B4A00AADB2E /* SceneDelegate.swift */; };
 		F85C909A25723B4A00AADB2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85C909925723B4A00AADB2E /* ViewController.swift */; };
@@ -50,6 +60,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F83B9D5B2573CA1000B95511 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		F83B9D602573DA2300B95511 /* PostsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModel.swift; sourceTree = "<group>"; };
+		F83B9D652573DC2600B95511 /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
+		F83B9D6A2573DCCF00B95511 /* TodosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosModel.swift; sourceTree = "<group>"; };
+		F83B9D6F2573DE2300B95511 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		F83B9D742573DF0600B95511 /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
+		F83B9D792573E0C500B95511 /* ProductCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoriesModel.swift; sourceTree = "<group>"; };
+		F83B9D802573E65C00B95511 /* CreateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserRequest.swift; sourceTree = "<group>"; };
+		F83B9D882573E9AE00B95511 /* ValidationErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationErrorModel.swift; sourceTree = "<group>"; };
+		F83B9D902573EABA00B95511 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
 		F85C909225723B4A00AADB2E /* GoRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F85C909525723B4A00AADB2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F85C909725723B4A00AADB2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +126,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F83B9D7E2573E57000B95511 /* Request Models */ = {
+			isa = PBXGroup;
+			children = (
+				F83B9D802573E65C00B95511 /* CreateUserRequest.swift */,
+			);
+			path = "Request Models";
+			sourceTree = "<group>";
+		};
+		F83B9D7F2573E58D00B95511 /* Response Models */ = {
+			isa = PBXGroup;
+			children = (
+				F83B9D6A2573DCCF00B95511 /* TodosModel.swift */,
+				F83B9D792573E0C500B95511 /* ProductCategoriesModel.swift */,
+				F83B9D742573DF0600B95511 /* ProductsModel.swift */,
+				F83B9D6F2573DE2300B95511 /* CategoriesModel.swift */,
+				F83B9D652573DC2600B95511 /* CommentsModel.swift */,
+				F83B9D602573DA2300B95511 /* PostsModel.swift */,
+				F83B9D5B2573CA1000B95511 /* UsersModel.swift */,
+				F83B9D902573EABA00B95511 /* CreateUserModel.swift */,
+			);
+			path = "Response Models";
+			sourceTree = "<group>";
+		};
 		F85C908925723B4A00AADB2E = {
 			isa = PBXGroup;
 			children = (
@@ -182,9 +225,12 @@
 		F85C90ED2572437000AADB2E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F83B9D882573E9AE00B95511 /* ValidationErrorModel.swift */,
 				F85C90F62572442A00AADB2E /* ErrorModel.swift */,
 				F85C90EE2572440C00AADB2E /* GenericResponseModel.swift */,
 				F85C90FB2572444900AADB2E /* MediaModel.swift */,
+				F83B9D7E2573E57000B95511 /* Request Models */,
+				F83B9D7F2573E58D00B95511 /* Response Models */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,16 +372,26 @@
 				F85C91132572573800AADB2E /* APIError.swift in Sources */,
 				F85C90E4257242C600AADB2E /* ResponseHandler.swift in Sources */,
 				F85C909A25723B4A00AADB2E /* ViewController.swift in Sources */,
+				F83B9D892573E9AE00B95511 /* ValidationErrorModel.swift in Sources */,
 				F85C90E9257242DC00AADB2E /* ServerConstant.swift in Sources */,
+				F83B9D812573E65C00B95511 /* CreateUserRequest.swift in Sources */,
 				F85C909625723B4A00AADB2E /* AppDelegate.swift in Sources */,
 				F85C90F72572442A00AADB2E /* ErrorModel.swift in Sources */,
 				F85C9106257250B100AADB2E /* HTTPMethod.swift in Sources */,
+				F83B9D6B2573DCCF00B95511 /* TodosModel.swift in Sources */,
+				F83B9D5C2573CA1000B95511 /* UsersModel.swift in Sources */,
 				F85C90EF2572440C00AADB2E /* GenericResponseModel.swift in Sources */,
+				F83B9D612573DA2300B95511 /* PostsModel.swift in Sources */,
 				F85C91232572967400AADB2E /* InternetConnectionManager.swift in Sources */,
 				F85C909825723B4A00AADB2E /* SceneDelegate.swift in Sources */,
+				F83B9D702573DE2300B95511 /* CategoriesModel.swift in Sources */,
 				F85C90CD2572427400AADB2E /* APIClient.swift in Sources */,
+				F83B9D752573DF0600B95511 /* ProductsModel.swift in Sources */,
 				F85C90A025723B4A00AADB2E /* GoRest.xcdatamodeld in Sources */,
 				F85C90D52572428400AADB2E /* APIRequestHandler.swift in Sources */,
+				F83B9D912573EABA00B95511 /* CreateUserModel.swift in Sources */,
+				F83B9D662573DC2600B95511 /* CommentsModel.swift in Sources */,
+				F83B9D7A2573E0C500B95511 /* ProductCategoriesModel.swift in Sources */,
 				F85C910B257250E900AADB2E /* APIRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

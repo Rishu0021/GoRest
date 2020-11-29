@@ -23,19 +23,27 @@ enum ContentType: String {
 
 
 enum APIRouter {
-    case login
+    case users
+    case posts
+    case comments
+    case todos
+    case categories
+    case products
+    case productCategories
+    
+    case createUser
       
     
     // MARK: - HTTPMethod
     var method: HTTPMethod {
         switch self {
-        case .login :
+        case .createUser :
             return .post
             
-        /*case .myProfile :
+        case .users, .posts, .comments, .todos, .categories, .products, .productCategories :
             return .get
             
-        case .updateActivity :
+        /*case .updateActivity :
             return .put
             
         case .delete :
@@ -46,14 +54,33 @@ enum APIRouter {
     // MARK: - Path
     var path: String {
         switch self {
-        case .login:
-            return "v1/login"
+        case .users:
+            return "users"
+        case .posts:
+            return "posts"
+        case .comments:
+            return "comments"
+        case .todos:
+            return "todos"
+        case .categories:
+            return "categories"
+        case .products:
+            return "products"
+        case .productCategories:
+            return "product-categories"
+        case .createUser:
+            return "users"
         }
     }
     
     // MARK: - Headers
     var headers: [HTTPHeader]? {
         switch self {
+        
+        case .createUser :
+            return [HTTPHeader(field: HTTPHeaderField.acceptType.rawValue, value: ContentType.json.rawValue),
+                    HTTPHeader(field: HTTPHeaderField.contentType.rawValue, value: ContentType.json.rawValue),
+                    HTTPHeader(field: HTTPHeaderField.authentication.rawValue, value: kBearerToken)]
                     
         default:
             return [HTTPHeader(field: HTTPHeaderField.acceptType.rawValue, value: ContentType.json.rawValue),

@@ -21,7 +21,12 @@ extension ResponseHandler {
     func handleResponse<T: Decodable>(_ result: Response, _ decoder: T.Type, completion: CallResponse<T>) {
         
         let statusCode = (result.response as? HTTPURLResponse)?.statusCode ?? 0
+        print("\nStatus Code : --- \(statusCode)")
+        
         if let data = result.data {
+            if let response = String(data: data, encoding: .utf8) {
+                print("\nResponse : ", response)
+            }
             do {
                 switch statusCode {
                 case 200...299:
@@ -44,6 +49,14 @@ extension ResponseHandler {
                     }
                 }
             } catch let error {
+                let model = try? JSONDecoder().decode(ValidationModel.self, from: data)
+                if model?.code == ServerConstant.StatusCode.APIValidationFailed {
+                    let errors = model?.data?.compactMap({ ($0.displayMessage) })
+                    let message = errors?.joined(separator: ", ")
+                    //ValidationError
+                    completion(.failure(.Server(message ?? "Validation Error")))
+                    return
+                }
                 //"Failed to decode response"
                 print("print error \(String(describing: error))")
                 completion(.failure(.Decoding(error.localizedDescription)))

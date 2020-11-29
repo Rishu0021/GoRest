@@ -20,7 +20,7 @@ enum APIError: Error {
 }
 
 extension APIError: LocalizedError {
-    public var localizedDescription: String {
+    public var errorDescription: String? {
         switch self {
         case .InvalidUrl:
             return NSLocalizedString("Unable to create the URLRequest object", comment: "")

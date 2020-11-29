@@ -22,10 +22,52 @@ extension RequestGenerator {
     func generateRequest(route : APIRouter, params : [Any?]?) -> APIRequest {
         switch route {
             
-        // For Login OTP Verify
-        case .login:
-            //let loginRequest = params?.first as? LoginRequest
-            let request = APIRequest(method: route.method, path: route.path)//, body: loginRequest)
+        // For Get Users List
+        case .users:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Posts List
+        case .posts:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Comments List
+        case .comments:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Todos List
+        case .todos:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Categories List
+        case .categories:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Products List
+        case .products:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // For Get Product Categories List
+        case .productCategories:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
+            
+        // Create a new user
+        case .createUser:
+            let createUserRequest = params?.first as? CreateUserRequest
+            let request = APIRequest(method: route.method, path: route.path, body: createUserRequest)
             request.headers = route.headers
             return request
             
