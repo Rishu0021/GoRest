@@ -13,4 +13,4 @@ Network Requests and REST APIs usage in Swift with URLSession using Protocol-Ori
 - Download or clone the repository.
 - Import the project through Xcode.
 - Generic API function - Pass the case defined in APIRouter for each api request and the Model in which we want the result of the API to be mapped.
-- Run the application in mobile or simulator running iOS 13
+- Run the application in mobile or simulator
