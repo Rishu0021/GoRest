@@ -5,8 +5,7 @@ Network Requests and REST APIs usage in Swift with URLSession using Protocol-Ori
 - Swift 5
 - XCode
 
-# Technology used
-- Xcode
+# Languages / Frameworks Used
 - Swift 5
 
 # How to use ?
