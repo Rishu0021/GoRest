@@ -12,12 +12,36 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.getCreateUser()
+        // Get Users list
+        //self.getUsers()
+        
+        // Get Posts
+        //self.getPosts()
+        
+        // Get Comments
+        //self.getComments()
+        
+        // Get Todos
+        //self.getTodos()
+        
+        // Get Categories
+        //self.getCategories()
+        
+        // Get Products
+        //self.getProducts()
+        
+        // Get Product Categories
+        //self.getProductCategories()
+        
+        
+        // Create new user (Post Request)
+        self.createUser()
     }
 
 
 }
 
+//MARK:- API Calls
 extension ViewController: APIRequestHandler {
     
     func getUsers() {
@@ -97,7 +121,7 @@ extension ViewController: APIRequestHandler {
         }
     }
     
-    func getCreateUser() {
+    func createUser() {
         let userData = CreateUserRequest(name: "Tenali Raman", gender: "Male", email: "tenali.raman@15ce.com", status: "Active")
         //let userData = CreateUserRequest(name: nil, gender: nil, email: nil, status: nil)
         self.sendRequest(route: .createUser, CreateUserModel.self, userData) { (result) in

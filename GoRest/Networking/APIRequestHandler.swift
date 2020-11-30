@@ -12,13 +12,12 @@ typealias CallResponse<T> = (Result<T>) -> Void
 
 /// API protocol, The alamofire wrapper
 protocol APIRequestHandler: RequestGenerator, ResponseHandler {
-    /// Calling network layer via (Alamofire), this implementation can be replaced anytime in one place which is the protocol itself, applied anywhere.
+    /// Calling network layer via (URLSessionDataTask), this implementation can be replaced anytime in one place which is the protocol itself, applied anywhere.
     ///
     /// - Parameters:
     ///   - decoder: Codable confirmed class/struct, Model.type.
     ///   - completion: Results of the request, general errors cases handled.
     /// - Returns: URLSessionDataTask.
-    @discardableResult
     func sendRequest<T: Decodable>(route: APIRouter, _ decoder: T.Type, _ params: Any?..., completion: @escaping CallResponse<T>) -> URLSessionDataTask?
 }
 

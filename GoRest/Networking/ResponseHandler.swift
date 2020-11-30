@@ -11,7 +11,7 @@ protocol ResponseHandler {
     /// Handles request response, never called anywhere but APIRequestHandler
     ///
     /// - Parameters:
-    ///   - response: response from network request, for now alamofire Data response
+    ///   - response: response from network request, for now URLSessionDataTask response
     ///   - completion: completing processing the json response, and delivering it in the completion handler
     func handleResponse<T: Decodable>(_ response: Response, _ decoder: T.Type, completion: CallResponse<T>)
 }
@@ -34,27 +34,27 @@ extension ResponseHandler {
                     completion(.success(model))
                 default:
                     let model = try JSONDecoder().decode(ErrorModel.self, from: data)
-                    if statusCode == ServerConstant.StatusCode.APIValidationFailed {
+                    if statusCode == StatusCode.APIValidationFailed.rawValue {
                         let message = model.errors?.error ?? model.message
                         //ValidationError
-                        completion(.failure(.Server(message ?? "Validation Error")))
-                    } else if statusCode == ServerConstant.StatusCode.Conflict {
+                        completion(.failure(.Server(message ?? errorMessage(for: statusCode))))
+                    } else if statusCode == StatusCode.Conflict.rawValue {
                         //DuplicationError
-                        completion(.failure(.Server(model.message ?? "Duplication Error")))
-                    } else if statusCode == ServerConstant.StatusCode.Unauthorized {
+                        completion(.failure(.Server(model.message ?? errorMessage(for: statusCode))))
+                    } else if statusCode == StatusCode.Unauthorized.rawValue {
                         //Unauthorized
-                        completion(.failure(.UnAuthorized(model.message ?? "Unauthorized")))
+                        completion(.failure(.UnAuthorized(model.message ?? errorMessage(for: statusCode))))
                     } else {
-                        completion(.failure(.Other(model.message ?? "Something went wrong...")))
+                        completion(.failure(.Other(model.message ?? errorMessage(for: statusCode))))
                     }
                 }
             } catch let error {
                 let model = try? JSONDecoder().decode(ValidationModel.self, from: data)
-                if model?.code == ServerConstant.StatusCode.APIValidationFailed {
+                if model?.code == StatusCode.APIValidationFailed.rawValue {
                     let errors = model?.data?.compactMap({ ($0.displayMessage) })
                     let message = errors?.joined(separator: ", ")
                     //ValidationError
-                    completion(.failure(.Server(message ?? "Validation Error")))
+                    completion(.failure(.Server(message ?? errorMessage(for: statusCode))))
                     return
                 }
                 //"Failed to decode response"
@@ -66,7 +66,7 @@ extension ResponseHandler {
             print("print error \(String(describing: error.localizedDescription))")
             completion(.failure(.Server(error.localizedDescription)))
         } else {
-            completion(.failure(.Other("Something went wrong...")))
+            completion(.failure(.Other(errorMessage(for: statusCode))))
         }
         
     }

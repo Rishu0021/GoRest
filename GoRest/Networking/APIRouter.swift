@@ -23,6 +23,7 @@ enum ContentType: String {
 
 
 enum APIRouter {
+    // cases for each API request
     case users
     case posts
     case comments
@@ -34,7 +35,7 @@ enum APIRouter {
     case createUser
       
     
-    // MARK: - HTTPMethod
+    // MARK: - HTTPMethod(specify method for each API)
     var method: HTTPMethod {
         switch self {
         case .createUser :
@@ -51,7 +52,7 @@ enum APIRouter {
         }
     }
     
-    // MARK: - Path
+    // MARK: - Path(specify endpoints for each API)
     var path: String {
         switch self {
         case .users:
@@ -73,7 +74,7 @@ enum APIRouter {
         }
     }
     
-    // MARK: - Headers
+    // MARK: - Headers(specify headers for each API)
     var headers: [HTTPHeader]? {
         switch self {
         

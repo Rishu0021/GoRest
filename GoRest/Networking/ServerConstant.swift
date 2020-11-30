@@ -51,178 +51,91 @@ enum ResponseType {
 typealias CompletionHandler = (_ responseType : ResponseType, _ message: String?, _ response: Any?) -> Void
 
 
-struct ServerConstant {
-    
-    struct StatusCode {
-        static let Continue = 100
-        static let ContinueMsg = "Continue"
-        static let SwitchingProtocols = 101
-        static let SwitchingProtocolsMsg = "Switching Protocols"
-        static let OK = 200
-        static let Created = 201
-        static let CreatedMsg = "Created"
-        static let Accepted = 202
-        static let AcceptedMsg = "Accepted"
-        static let NonAuthoritativeInformation = 203
-        static let NonAuthoritativeInformationMsg = "NonAuthoritative Information"
-        static let NoContent = 204
-        static let NoContentMsg = "No Content"
-        static let ResetContent = 205
-        static let ResetContentMsg = "Reset Content"
-        static let PartialContent = 206
-        static let PartialContentMsg = "Partial Content"
-        static let MultipleChoices = 300
-        static let MultipleChoicesMsg = "Multiple Choices"
-        static let MovedPermanently = 301
-        static let MovedPermanentlyMsg = "Moved Permanently"
-        static let Found = 302
-        static let FoundMsg = "Found"
-        static let SeeOther = 303
-        static let SeeOtherMsg = "See Other"
-        static let NotModified = 304
-        static let NotModifiedMsg = "Not Modified"
-        static let UseProxy = 305
-        static let UseProxyMsg = "Use Proxy"
-        static let Unused = 306
-        static let UnusedMsg = "(Unused)"
-        static let TemporaryRedirect = 307
-        static let TemporaryRedirectMsg = "Temporary Redirect"
-        static let BadRequest = 400
-        static let BadRequestMsg = "Bad Request"
-        static let Unauthorized = 401
-        static let UnauthorizedMsg = "Unauthorized"
-        static let PaymentRequired = 402
-        static let PaymentRequiredMsg = "Payment Required"
-        static let Forbidden = 403
-        static let ForbiddenMsg = "Forbidden"
-        static let NotFound = 404
-        static let NotFoundMsg = "Not Found"
-        static let MethodNotAllowed = 405
-        static let MethodNotAllowedMsg = "Method Not Allowed"
-        static let NotAcceptable = 406
-        static let NotAcceptableMsg = "Not Acceptable"
-        static let ProxyAuthenticationRequired = 407
-        static let ProxyAuthenticationRequiredMsg = "Proxy Authentication Required"
-        static let RequestTimeout = 408
-        static let RequestTimeoutMsg = "Request Timeout"
-        static let Conflict = 409
-        static let ConflictMsg = "Conflict"
-        static let Gone = 410
-        static let GoneMsg = "Gone"
-        static let LengthRequired = 411
-        static let LengthRequiredMsg = "Length Required"
-        static let PreconditionFailed = 412
-        static let PreconditionFailedMsg = "Precondition Failed"
-        static let RequestEntityTooLarge = 413
-        static let RequestEntityTooLargeMsg = "Request Entity Too Large"
-        static let RequestURITooLong = 414
-        static let RequestURITooLongMsg = "Request-URI Too Long"
-        static let UnsupportedMediaType = 415
-        static let UnsupportedMediaTypeMsg = "Unsupported Media Type"
-        static let RequestedRangeNotSatisfiable = 416
-        static let RequestedRangeNotSatisfiableMsg = "Requested Range Not Satisfiable"
-        static let ExpectationFailed = 417
-        static let ExpectationFailedMsg = "Expectation Failed"
-        static let APIValidationFailed = 422
-        static let APIValidationFailedMsg = "API Validation Failed"
-        static let InternalServerError = 500
-        static let InternalServerErrorMsg = "Internal Server Error"
-        static let NotImplemented = 501
-        static let NotImplementedMsg = "Not Implemented"
-        static let BadGateway = 502
-        static let BadGatewayMsg = "Bad Gateway"
-        static let ServiceUnavailable = 503
-        static let ServiceUnavailableMsg = "Service Unavailable"
-        static let GatewayTimeout = 504
-        static let GatewayTimeoutMsg = "Gateway Timeout"
-        static let HTTPVersionNotSupported = 505
-        static let HTTPVersionNotSupportedMsg = "HTTP Version Not Supported"
-    }
-}
-
 func errorMessage(for statusCode: Int) -> String {
     
     switch statusCode {
-    case ServerConstant.StatusCode.Accepted:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.AcceptedMsg,statusCode)
-    case ServerConstant.StatusCode.BadGateway:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.BadGatewayMsg,statusCode)
-    case ServerConstant.StatusCode.BadRequest:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.BadRequestMsg,statusCode)
-    case ServerConstant.StatusCode.Conflict:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ConflictMsg,statusCode)
-    case ServerConstant.StatusCode.Continue:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ContinueMsg,statusCode)
-    case ServerConstant.StatusCode.Created:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.CreatedMsg,statusCode)
-    case ServerConstant.StatusCode.ExpectationFailed:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ExpectationFailedMsg,statusCode)
-    case ServerConstant.StatusCode.Forbidden:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ForbiddenMsg,statusCode)
-    case ServerConstant.StatusCode.Found:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.FoundMsg,statusCode)
-    case ServerConstant.StatusCode.GatewayTimeout:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.GatewayTimeoutMsg,statusCode)
-    case ServerConstant.StatusCode.Gone:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.GoneMsg,statusCode)
-    case ServerConstant.StatusCode.HTTPVersionNotSupported:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.HTTPVersionNotSupportedMsg,statusCode)
-    case ServerConstant.StatusCode.InternalServerError:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.InternalServerErrorMsg,statusCode)
-    case ServerConstant.StatusCode.LengthRequired:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.LengthRequiredMsg,statusCode)
-    case ServerConstant.StatusCode.MethodNotAllowed:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.MethodNotAllowedMsg,statusCode)
-    case ServerConstant.StatusCode.MovedPermanently:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.MovedPermanentlyMsg,statusCode)
-    case ServerConstant.StatusCode.MultipleChoices:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.MultipleChoicesMsg,statusCode)
-    case ServerConstant.StatusCode.NoContent:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NoContentMsg,statusCode)
-    case ServerConstant.StatusCode.NonAuthoritativeInformation:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NonAuthoritativeInformationMsg,statusCode)
-    case ServerConstant.StatusCode.NotAcceptable:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NotAcceptableMsg,statusCode)
-    case ServerConstant.StatusCode.NotFound:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NotFoundMsg,statusCode)
-    case ServerConstant.StatusCode.NotImplemented:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NotImplementedMsg,statusCode)
-    case ServerConstant.StatusCode.NotModified:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.NotModifiedMsg,statusCode)
-    case ServerConstant.StatusCode.PartialContent:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.PartialContentMsg,statusCode)
-    case ServerConstant.StatusCode.PaymentRequired:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.PaymentRequiredMsg,statusCode)
-    case ServerConstant.StatusCode.PreconditionFailed:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.PreconditionFailedMsg,statusCode)
-    case ServerConstant.StatusCode.ProxyAuthenticationRequired:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ProxyAuthenticationRequiredMsg,statusCode)
-    case ServerConstant.StatusCode.RequestedRangeNotSatisfiable:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.RequestedRangeNotSatisfiableMsg,statusCode)
-    case ServerConstant.StatusCode.RequestEntityTooLarge:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.RequestEntityTooLargeMsg,statusCode)
-    case ServerConstant.StatusCode.RequestTimeout:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.RequestTimeoutMsg,statusCode)
-    case ServerConstant.StatusCode.RequestURITooLong:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.RequestURITooLongMsg,statusCode)
-    case ServerConstant.StatusCode.ResetContent:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ResetContentMsg,statusCode)
-    case ServerConstant.StatusCode.SeeOther:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.SeeOtherMsg,statusCode)
-    case ServerConstant.StatusCode.ServiceUnavailable:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.ServiceUnavailableMsg,statusCode)
-    case ServerConstant.StatusCode.SwitchingProtocols:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.SwitchingProtocolsMsg,statusCode)
-    case ServerConstant.StatusCode.TemporaryRedirect:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.TemporaryRedirectMsg,statusCode)
-    case ServerConstant.StatusCode.Unauthorized:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.UnauthorizedMsg,statusCode)
-    case ServerConstant.StatusCode.UnsupportedMediaType:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.UnsupportedMediaTypeMsg,statusCode)
-    case ServerConstant.StatusCode.Unused:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.UnusedMsg,statusCode)
-    case ServerConstant.StatusCode.UseProxy:
-        return String.init(format: "%@ (%d)", ServerConstant.StatusCode.UseProxyMsg,statusCode)
+    case StatusCode.Accepted.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Accepted.message, statusCode)
+    case StatusCode.TooManyRequests.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.TooManyRequests.message, statusCode)
+    case StatusCode.BadGateway.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.BadGateway.message, statusCode)
+    case StatusCode.BadRequest.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.BadRequest.message, statusCode)
+    case StatusCode.Conflict.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Conflict.message, statusCode)
+    case StatusCode.Continue.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Continue.message, statusCode)
+    case StatusCode.Created.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Created.message, statusCode)
+    case StatusCode.ExpectationFailed.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.ExpectationFailed.message, statusCode)
+    case StatusCode.Forbidden.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Forbidden.message, statusCode)
+    case StatusCode.Found.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Found.message, statusCode)
+    case StatusCode.GatewayTimeout.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.GatewayTimeout.message, statusCode)
+    case StatusCode.Gone.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Gone.message, statusCode)
+    case StatusCode.HTTPVersionNotSupported.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.HTTPVersionNotSupported.message, statusCode)
+    case StatusCode.InternalServerError.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.InternalServerError.message, statusCode)
+    case StatusCode.LengthRequired.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.LengthRequired.message, statusCode)
+    case StatusCode.MethodNotAllowed.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.MethodNotAllowed.message, statusCode)
+    case StatusCode.MovedPermanently.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.MovedPermanently.message, statusCode)
+    case StatusCode.MultipleChoices.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.MultipleChoices.message, statusCode)
+    case StatusCode.NoContent.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NoContent.message, statusCode)
+    case StatusCode.NonAuthoritativeInformation.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NonAuthoritativeInformation.message, statusCode)
+    case StatusCode.NotAcceptable.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NotAcceptable.message, statusCode)
+    case StatusCode.NotFound.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NotFound.message, statusCode)
+    case StatusCode.NotImplemented.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NotImplemented.message, statusCode)
+    case StatusCode.NotModified.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.NotModified.message, statusCode)
+    case StatusCode.PartialContent.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.PartialContent.message, statusCode)
+    case StatusCode.PaymentRequired.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.PaymentRequired.message, statusCode)
+    case StatusCode.PreconditionFailed.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.PreconditionFailed.message, statusCode)
+    case StatusCode.ProxyAuthenticationRequired.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.ProxyAuthenticationRequired.message, statusCode)
+    case StatusCode.RequestedRangeNotSatisfiable.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.RequestedRangeNotSatisfiable.message, statusCode)
+    case StatusCode.RequestEntityTooLarge.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.RequestEntityTooLarge.message, statusCode)
+    case StatusCode.RequestTimeout.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.RequestTimeout.message, statusCode)
+    case StatusCode.RequestURITooLong.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.RequestURITooLong.message, statusCode)
+    case StatusCode.ResetContent.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.ResetContent.message, statusCode)
+    case StatusCode.SeeOther.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.SeeOther.message, statusCode)
+    case StatusCode.ServiceUnavailable.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.ServiceUnavailable.message, statusCode)
+    case StatusCode.SwitchingProtocols.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.SwitchingProtocols.message, statusCode)
+    case StatusCode.TemporaryRedirect.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.TemporaryRedirect.message, statusCode)
+    case StatusCode.Unauthorized.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Unauthorized.message, statusCode)
+    case StatusCode.UnsupportedMediaType.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.UnsupportedMediaType.message, statusCode)
+    case StatusCode.Unused.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.Unused.message, statusCode)
+    case StatusCode.UseProxy.rawValue:
+        return String.init(format: "%@ (%d)", StatusCode.UseProxy.message, statusCode)
     default:
         return String.init(format: "Something went wrong (%d)", statusCode)
     }
@@ -245,3 +158,140 @@ func errorMessage(for statusCode: Int) -> String {
  429: Too many requests. The request was rejected due to rate limiting.
  500: Internal server error. This could be caused by internal program errors.
  */
+
+enum StatusCode: Int {
+    case Continue = 100
+    case SwitchingProtocols = 101
+    case OK = 200
+    case Created = 201
+    case Accepted = 202
+    case NonAuthoritativeInformation = 203
+    case NoContent = 204
+    case ResetContent = 205
+    case PartialContent = 206
+    case MultipleChoices = 300
+    case MovedPermanently = 301
+    case Found = 302
+    case SeeOther = 303
+    case NotModified = 304
+    case UseProxy = 305
+    case Unused = 306
+    case TemporaryRedirect = 307
+    case BadRequest = 400
+    case Unauthorized = 401
+    case PaymentRequired = 402
+    case Forbidden = 403
+    case NotFound = 404
+    case MethodNotAllowed = 405
+    case NotAcceptable = 406
+    case ProxyAuthenticationRequired = 407
+    case RequestTimeout = 408
+    case Conflict = 409
+    case Gone = 410
+    case LengthRequired = 411
+    case PreconditionFailed = 412
+    case RequestEntityTooLarge = 413
+    case RequestURITooLong = 414
+    case UnsupportedMediaType = 415
+    case RequestedRangeNotSatisfiable = 416
+    case ExpectationFailed = 417
+    case APIValidationFailed = 422
+    case TooManyRequests = 429
+    case InternalServerError = 500
+    case NotImplemented = 501
+    case BadGateway = 502
+    case ServiceUnavailable = 503
+    case GatewayTimeout = 504
+    case HTTPVersionNotSupported = 505
+    
+    var message: String {
+        switch self {
+        case .Continue:
+            return "Continue."
+        case .SwitchingProtocols:
+            return "Switching protocols."
+        case .OK:
+            return "OK. Everything worked as expected."
+        case .Created:
+            return "A resource was successfully created in response to a POST request. The Location header contains the URL pointing to the newly created resource."
+        case .Accepted:
+            return "Accepted."
+        case .NonAuthoritativeInformation:
+            return "Non authoritative information."
+        case .NoContent:
+            return "The request was handled successfully and the response contains no body content (like a DELETE request)."
+        case .ResetContent:
+            return "Reset content."
+        case .PartialContent:
+            return "Partial content."
+        case .MultipleChoices:
+            return "Multiple Choices."
+        case .MovedPermanently:
+            return "Moved permanently."
+        case .Found:
+            return "Found."
+        case .SeeOther:
+            return "See other."
+        case .NotModified:
+            return "The resource was not modified. You can use the cached version."
+        case .UseProxy:
+            return "Use proxy."
+        case .Unused:
+            return "(Unused)."
+        case .TemporaryRedirect:
+            return "Temporary redirect."
+        case .BadRequest:
+            return "Bad request. This could be caused by various actions by the user, such as providing invalid JSON data in the request body, providing invalid action parameters, etc."
+        case .Unauthorized:
+            return "Authentication failed."
+        case .PaymentRequired:
+            return "Payment required."
+        case .Forbidden:
+            return "The authenticated user is not allowed to access the specified API endpoint."
+        case .NotFound:
+            return "The requested resource does not exist."
+        case .MethodNotAllowed:
+            return "Method not allowed. Please check the Allow header for the allowed HTTP methods."
+        case .NotAcceptable:
+            return "Not acceptable."
+        case .ProxyAuthenticationRequired:
+            return "Proxy authentication required."
+        case .RequestTimeout:
+            return "Request timeout."
+        case .Conflict:
+            return "Conflict."
+        case .Gone:
+            return "Gone."
+        case .LengthRequired:
+            return "Length required."
+        case .PreconditionFailed:
+            return "Precondition failed."
+        case .RequestEntityTooLarge:
+            return "Request entity too large."
+        case .RequestURITooLong:
+            return "Request-URI too long."
+        case .UnsupportedMediaType:
+            return "Unsupported media type. The requested content type or version number is invalid."
+        case .RequestedRangeNotSatisfiable:
+            return "Requested range not satisfiable."
+        case .ExpectationFailed:
+            return "Expectation failed."
+        case .APIValidationFailed:
+            return "Data validation failed (in response to a POST request, for example). Please check the response body for detailed error messages."
+        case .TooManyRequests:
+            return "Too many requests. The request was rejected due to rate limiting."
+        case .InternalServerError:
+            return "Internal server error. This could be caused by internal program errors."
+        case .NotImplemented:
+            return "Not implemented."
+        case .BadGateway:
+            return "Bad gateway."
+        case .ServiceUnavailable:
+            return "Service unavailable."
+        case .GatewayTimeout:
+            return "Gateway timeout."
+        case .HTTPVersionNotSupported:
+            return "HTTP version not supported."
+        }
+    }
+}
