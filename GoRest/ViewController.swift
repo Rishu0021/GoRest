@@ -31,14 +31,23 @@ class ViewController: UIViewController {
         //self.getProducts()
         
         // Get Product Categories
-        //self.getProductCategories()
-        
-        
+        self.getProductCategories()
+                
+    }
+
+    @IBAction func buttonHandlerCreateUser(_ sender: Any) {
         // Create new user (Post Request)
         self.createUser()
     }
-
-
+    @IBAction func buttonHandlerUpdateUser(_ sender: Any) {
+        // Update user (Put Request)
+        self.updateUser()
+    }
+    @IBAction func buttonHandlerDeleteUser(_ sender: Any) {
+        // Delete user (delete Request)
+        self.deleteUser()
+    }
+    
 }
 
 //MARK:- API Calls
@@ -122,13 +131,45 @@ extension ViewController: APIRequestHandler {
     }
     
     func createUser() {
-        let userData = CreateUserRequest(name: "Tenali Raman", gender: "Male", email: "tenali.raman@15ce.com", status: "Active")
-        //let userData = CreateUserRequest(name: nil, gender: nil, email: nil, status: nil)
-        self.sendRequest(route: .createUser, CreateUserModel.self, userData) { (result) in
+        let userData = UserRequest(name: "Arjun Reddy", gender: "Male", email: "arjun.reddy@15ce.com", status: "Active")
+        //let userData = UserRequest(name: nil, gender: nil, email: nil, status: nil)
+        self.sendRequest(route: .createUser, UserResponseModel.self, userData) { (result) in
             switch result {
             case .failure(let error):
                 print("Error:", error.errorDescription ?? "")
             case .success(let data):
+                if let userId = data.data?.id {
+                    UserDefaults.standard.setValue(userId, forKey: "UserId")
+                }
+                print("Response:", data)
+            }
+        }
+    }
+    
+    func updateUser() {
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else { return }
+        let userData = UserRequest(name: "Arjun Raman", email: "arjun.raman@15ce.com", status: "Active")
+        self.sendRequest(route: .updateUser(userId), UserResponseModel.self, userData) { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error:", error.errorDescription ?? "")
+            case .success(let data):
+                print("Response:", data)
+            }
+        }
+    }
+    
+    func deleteUser() {
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else { return }
+        self.sendRequest(route: .deleteUser(userId), UserResponseModel.self) { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error:", error.errorDescription ?? "")
+            case .success(let data):
+                if data.code == 204 {
+                    UserDefaults.standard.removeObject(forKey: "UserId")
+                    print("User has been deleted successfully")
+                }
                 print("Response:", data)
             }
         }

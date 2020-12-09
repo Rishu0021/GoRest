@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreateUserModel : Codable {
+struct UserResponseModel : Codable {
     let code : Int?
     let meta : String?
     let data : UserDataModel?

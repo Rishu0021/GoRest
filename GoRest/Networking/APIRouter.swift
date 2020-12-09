@@ -33,6 +33,8 @@ enum APIRouter {
     case productCategories
     
     case createUser
+    case updateUser(_ id: String)
+    case deleteUser(_ id: String)
       
     
     // MARK: - HTTPMethod(specify method for each API)
@@ -44,11 +46,11 @@ enum APIRouter {
         case .users, .posts, .comments, .todos, .categories, .products, .productCategories :
             return .get
             
-        /*case .updateActivity :
+        case .updateUser :
             return .put
             
-        case .delete :
-            return .delete*/
+        case .deleteUser :
+            return .delete
         }
     }
     
@@ -71,6 +73,10 @@ enum APIRouter {
             return "product-categories"
         case .createUser:
             return "users"
+        case .updateUser(let id):
+            return "users/\(id)"
+        case .deleteUser(let id):
+            return "users/\(id)"
         }
     }
     
@@ -78,7 +84,7 @@ enum APIRouter {
     var headers: [HTTPHeader]? {
         switch self {
         
-        case .createUser :
+        case .createUser, .updateUser, .deleteUser :
             return [HTTPHeader(field: HTTPHeaderField.acceptType.rawValue, value: ContentType.json.rawValue),
                     HTTPHeader(field: HTTPHeaderField.contentType.rawValue, value: ContentType.json.rawValue),
                     HTTPHeader(field: HTTPHeaderField.authentication.rawValue, value: kBearerToken)]

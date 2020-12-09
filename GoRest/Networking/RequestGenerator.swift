@@ -66,11 +66,23 @@ extension RequestGenerator {
             
         // Create a new user
         case .createUser:
-            let createUserRequest = params?.first as? CreateUserRequest
+            let createUserRequest = params?.first as? UserRequest
             let request = APIRequest(method: route.method, path: route.path, body: createUserRequest)
             request.headers = route.headers
             return request
             
+        // Update user details
+        case .updateUser:
+            let createUserRequest = params?.first as? UserRequest
+            let request = APIRequest(method: route.method, path: route.path, body: createUserRequest)
+            request.headers = route.headers
+            return request
+            
+        // Delete user
+        case .deleteUser:
+            let request = APIRequest(method: route.method, path: route.path)
+            request.headers = route.headers
+            return request
         }
     }
 
